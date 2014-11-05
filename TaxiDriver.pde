@@ -1,16 +1,20 @@
 // is it still blank ? it shouldnt be.
 int horizontalLines = 7;
 int verticalLines = 7;
+int CITY_SIZE = 3;
 
 void setup()
 {
    size(800, 500);
    background(255);
+   City city = new City(CITY_SIZE);
+   //  Intersection[] intersections city.getIntersections();
 }
 
 void draw()
 {
    frame.setLocation(width/3,height/3);   
+   //city.drawCity();
    drawIntersections();
    drawGrid();
    noLoop();
@@ -33,4 +37,3 @@ void drawGrid() {
    for(int i = 0; i < verticalLines; i++) {
       line(i*distanceVertical, 0, i*distanceVertical, height); 
    }
-}

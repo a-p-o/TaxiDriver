@@ -1,15 +1,20 @@
 class City {
-  
+
   int citySize;
-  
+  Intersection[] intersections;
+
   City(int size) {
     citySize = size;
   }
-  
-  void drawCity() {
+
+  Intersection[] getIntersections() {
+    return intersections;
+  }
+
+  void display() {
     // Draw City
   }
-  
+
   int getSize() {
     return citySize;
   }
