@@ -27,7 +27,7 @@ class Intersection {
   }
   
   void setup() {
-    Intersection intersection = new Intersection(0, 0);
-    
+    Intersection intersection = new Intersection(0, 0); 
   }
 }
+
