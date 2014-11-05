@@ -1,10 +1,11 @@
-// is it still blank ? it shouldnt be.
-void setup()
-{
-  
+int CITY_SIZE = 3;
+
+void setup() {
+  City city = new City(CITY_SIZE);
+
+//  Intersection[] intersections city.getIntersections();
 }
 
-void draw()
-{
-  
+void draw() {
+//  city.drawCity();
 }
