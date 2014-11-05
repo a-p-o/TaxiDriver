@@ -42,6 +42,7 @@ void setup()
         System.out.println("Distance to " + Z + ": " + Z.minDistance);
         ArrayList<Vertex> path = dij.getShortestPathTo(Z);
         System.out.println("Path: " + path);
+
 }
 
 void draw()
