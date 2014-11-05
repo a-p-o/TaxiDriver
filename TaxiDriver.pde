@@ -7,7 +7,7 @@ void setup()
 {
    size(800, 500);
    background(255);
-   City city = new City(CITY_SIZE);
+
    //  Intersection[] intersections city.getIntersections();
 }
 
@@ -37,3 +37,4 @@ void drawGrid() {
    for(int i = 0; i < verticalLines; i++) {
       line(i*distanceVertical, 0, i*distanceVertical, height); 
    }
+}
