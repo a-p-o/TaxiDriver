@@ -1,5 +1,5 @@
 // is it still blank ? it shouldnt be.
-int CITY_SIZE = 3;
+int CITY_SIZE = 5;
 City city;
 
 void setup()

@@ -60,7 +60,6 @@ class City {
     point.xValue = p1.xValue + ua * xDistance1;  
     point.yValue = p1.yValue + ua * yDistance1;  
 
-    // return the valid intersection  
     return point;  
   }
 

@@ -15,11 +15,8 @@ class Intersection {
   }
   
   void displayVertex() {
-     boolean hasVertex = (0.5 < random(0, 1)) ? true : false;
-     if(hasVertex) {
-         Vertex vertice = new Vertex("T");
-         vertice.drawVertex((int)xLocation, (int)yLocation); 
-      } 
+     Vertex vertice = new Vertex("T");
+     vertice.drawVertex((int)xLocation, (int)yLocation); 
   }
   
   int getTime() {
