@@ -3,26 +3,23 @@ class City {
   int citySize;
   int distanceHorizontal;
   int distanceVertical;
-  Intersection[] intersections;
+  int intersectionGridSize;
+  Intersection[] intersectionGrid;
 
   City(int size) {
     citySize = size;
   }
 
   Intersection[] getIntersections() {
-    return intersections;
+    return intersectionGrid;
   }
 
   void display() {
+   intersectionGridSize = citySize * citySize;
+   intersectionGrid = new Intersection[intersectionGridSize];
    distanceHorizontal = (int) height/(citySize + 1);
    distanceVertical = (int) width/(citySize + 1);
-//   for(int i = 1; i <= citySize; i++) {
-//      strokeWeight(10);
-//      line(0, i*distanceHorizontal, width, i*distanceHorizontal);
-//      line(i*distanceVertical, 0, i*distanceVertical, height);
-//      Intersection intersect = new Intersection(i*distanceHorizontal, i*distanceVertical);
-//      intersect.displayVertex();
-//   }
+   
    //Draw city grid
    for(int i = 0; i <= citySize; i++) {
       line(0, i*distanceHorizontal, width, i*distanceHorizontal);
@@ -30,6 +27,7 @@ class City {
    }
    
    //Draw intersections
+   int count = 0;
    for(int i = 1; i <= citySize; i++) {
        for(int j = 1; j <= citySize; j++) {
          Point p1 = new Point(i * distanceVertical, 0);
@@ -38,6 +36,8 @@ class City {
          Point p4 = new Point(width, j * distanceHorizontal);
          Point intersects = findIntersection(p1, p2, p3, p4);
          Intersection intersection = new Intersection(intersects);
+         intersectionGrid[count] = intersection;
+         count++;
          intersection.displayVertex();
       }
     }
