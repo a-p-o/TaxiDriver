@@ -7,7 +7,7 @@ void setup()
 {
    size(800, 500);
    background(255);
-   City city = new City(CITY_SIZE);
+   //City city = new City(CITY_SIZE);
    //  Intersection[] intersections city.getIntersections();
 }
 
