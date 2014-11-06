@@ -24,7 +24,8 @@ class Vertex
     }
     
     void drawVertex(int x, int y) {
-     ellipse(x, y, 20, 20);   
+      strokeWeight(2);
+      ellipse(x, y, 20, 20);
    }
 }
 

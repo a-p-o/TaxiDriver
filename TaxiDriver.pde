@@ -7,7 +7,7 @@ void setup()
     size(800, 500);
     background(255);
     city = new City(CITY_SIZE);
-    Intersection intersection = new Intersection(0, 0);
+    //Intersection intersection = new Intersection();
     //Intersection[] intersections = city.getIntersections();
    
     // mark all the vertices 
@@ -48,17 +48,6 @@ void draw()
 {
    frame.setLocation(width/3,height/3);   
    city.display();
-   //drawIntersections();
    noLoop();
 }
-
-/*
-void drawIntersections() {
-   int rand = (int)random(10,20);
-   for(int i = 0; i < rand; i++) {
-      Vertex vertice = new Vertex(); 
-      vertice.drawVertex();
-   }
-}
-*/
 

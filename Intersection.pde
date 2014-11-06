@@ -5,24 +5,32 @@ class Intersection {
   int time;
   boolean hasCrash;
   
-  Intersection(int x, int y) {
-    xLocation = x;
-    yLocation = y;
+  Intersection(Point point) {
+    xLocation = (int)point.getX();
+    yLocation = (int)point.getY();
     
     hasCrash = (0.5 < random(0, 1)) ? true : false;
     
     System.out.println("Has crash: " + hasCrash);
   }
   
+  void displayVertex() {
+     boolean hasVertex = (0.5 < random(0, 1)) ? true : false;
+     if(hasVertex) {
+         Vertex vertice = new Vertex("T");
+         vertice.drawVertex((int)xLocation, (int)yLocation); 
+      } 
+  }
+  
   int getTime() {
     return time;
   }
   
-  int getX() {
+  float getX() {
     return xLocation;
   }
   
-  int getY() {
+  float getY() {
     return yLocation;
   }
 }
