@@ -30,3 +30,4 @@ class Intersection {
     Intersection intersection = new Intersection(0, 0);
   }
 }
+
