@@ -23,10 +23,8 @@ class Vertex
         return Double.compare(minDistance, other.minDistance);
     }
     
-    void drawVertex() {
-     int randX = (int)random(100,700);
-     int randY = (int)random(50,500);
-     ellipse(randX, randY, 20, 20);   
+    void drawVertex(int x, int y) {
+     ellipse(x, y, 20, 20);   
    }
 }
 

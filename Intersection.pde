@@ -11,7 +11,7 @@ class Intersection {
     
     hasCrash = (0.5 < random(0, 1)) ? true : false;
     
-    println("Has crash: " + hasCrash);
+    System.out.println("Has crash: " + hasCrash);
   }
   
   int getTime() {
@@ -24,10 +24,6 @@ class Intersection {
   
   int getY() {
     return yLocation;
-  }
-  
-  void setup() {
-    Intersection intersection = new Intersection(0, 0);
   }
 }
 
