@@ -3,8 +3,7 @@ int yValue;
 int widthValue;
 int heightValue;
 
-class Vertex
-{
+class Vertex {
     String name;
     Edge[] adjacencies;
     double minDistance = Double.POSITIVE_INFINITY;
@@ -18,8 +17,7 @@ class Vertex
       return name; 
     }
     
-    int compareTo(Vertex other)
-    {
+    int compareTo(Vertex other) {
         return Double.compare(minDistance, other.minDistance);
     }
     
