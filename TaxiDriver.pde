@@ -50,4 +50,3 @@ void draw()
    city.display();
    noLoop();
 }
-
