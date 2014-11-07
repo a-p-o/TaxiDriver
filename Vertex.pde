@@ -1,9 +1,10 @@
+
+class Vertex {
 int xValue;
 int yValue;
 int widthValue;
 int heightValue;
 
-class Vertex {
     String name;
     Edge[] adjacencies;
     double minDistance = Double.POSITIVE_INFINITY;
@@ -22,8 +23,6 @@ class Vertex {
     }
     
     void drawVertex(int x, int y) {
-      xValue = x;
-      yValue = y;
       strokeWeight(2);
       ellipse(x, y, 20, 20);
    }

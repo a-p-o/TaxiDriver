@@ -52,14 +52,16 @@ class City
         //intersectionGrid[count] = intersection;
         
         
-        intersection.displayVertex(vertices.get(j-1));
+        //intersection.displayVertex(vertices.get(j-1));
         println( "count: " + count);
         
         vertices.get(count).setXValue((int)intersects.getX());
         vertices.get(count).setYValue((int)intersects.getY());
+       
         println("X: " + vertices.get(count).getXValue());
         println("Y: " + vertices.get(count).getYValue());
-        count++;
+         count++;
+         
       }
     }
   }
@@ -91,11 +93,6 @@ class City
   
   ArrayList<Vertex> getVertices()
   {
-//     for(int i = 0; i < vertices.size(); i++)
-//     {
-//       println(i);
-//       println("x value: " + vertices.get(i).getXValue() + " y value: " + vertices.get(i).getYValue());
-//     }
     return this.vertices; 
   }
 }
