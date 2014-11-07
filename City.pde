@@ -5,9 +5,16 @@ class City {
   int distanceVertical;
   int intersectionGridSize;
   Intersection[] intersectionGrid;
+  ArrayList<Vertex> path;
+  ArrayList<Vertex> vertices;
+  Point intersects;
 
-  City(int size) {
+  City(int size, ArrayList<Vertex> vertices, ArrayList<Vertex> path) {
     citySize = size;
+    println("in constructor's path: " + path);
+    println("in constructor's vertices: " + vertices);
+    this.vertices = vertices;
+    this.path = path;
   }
 
   Intersection[] getIntersections() {
@@ -28,20 +35,29 @@ class City {
    
    //Draw intersections
    int count = 0;
-   for(int i = 1; i <= citySize; i++) {
+   for(int i = 1; i <= citySize; i++) {      
        for(int j = 1; j <= citySize; j++) {
          Point p1 = new Point(i * distanceVertical, 0);
          Point p2 = new Point(i * distanceVertical, height);
          Point p3 = new Point(0, j * distanceHorizontal);
          Point p4 = new Point(width, j * distanceHorizontal);
-         Point intersects = findIntersection(p1, p2, p3, p4);
+         intersects = findIntersection(p1, p2, p3, p4);
          Intersection intersection = new Intersection(intersects);
-         intersectionGrid[count] = intersection;
+         //intersectionGrid[count] = intersection;
+         
+         
+         intersection.displayVertex(vertices.get(j-1));
+         println( "count: " + count);
+         
+         vertices.get(count).setXValue((int)intersects.getX());
+         vertices.get(count).setYValue((int)intersects.getY());
+         println("X: " + vertices.get(count).getXValue());
+         println("Y: " + vertices.get(count).getYValue());
          count++;
-         intersection.displayVertex();
       }
     }
   }
+  
   
   Point findIntersection(Point p1, Point p2, Point p3, Point p4) {  
     float xDistance1, yDistance1, xDistance2, yDistance2, xDistance3, yDistance3;  
@@ -65,6 +81,16 @@ class City {
 
   int getSize() {
     return citySize;
+  }
+  
+  ArrayList<Vertex> getVertices()
+  {
+//     for(int i = 0; i < vertices.size(); i++)
+//     {
+//       println(i);
+//       println("x value: " + vertices.get(i).getXValue() + " y value: " + vertices.get(i).getYValue());
+//     }
+     return this.vertices; 
   }
 }
 
