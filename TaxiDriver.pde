@@ -6,23 +6,63 @@ void setup()
 {
     size(800, 500);
     background(255);
-    city = new City(CITY_SIZE);
     //Intersection intersection = new Intersection();
     //Intersection[] intersections = city.getIntersections();
    
     // mark all the vertices 
-    Vertex A = new Vertex("A");
-    Vertex B = new Vertex("B");
-    Vertex D = new Vertex("D");
-    Vertex F = new Vertex("F");
-    Vertex K = new Vertex("K");
-    Vertex J = new Vertex("J");
-    Vertex M = new Vertex("M");
-    Vertex O = new Vertex("O");
-    Vertex P = new Vertex("P");
-    Vertex R = new Vertex("R");
-    Vertex Z = new Vertex("Z");
-
+    Vertex A = new Vertex("1st Street");
+    Vertex B = new Vertex("2nd Street");
+    Vertex C = new Vertex("3rd Street");
+    Vertex D = new Vertex("4th Street");
+    Vertex E = new Vertex("5th Street");
+    Vertex F = new Vertex("6th Street");
+    Vertex G = new Vertex("7th Street");
+    Vertex H = new Vertex("8th Street");
+    Vertex I = new Vertex("9th Street");
+    Vertex J = new Vertex("Park Street");
+    Vertex K = new Vertex("Pine Street");
+    Vertex L = new Vertex("10th Street");
+    Vertex M = new Vertex("Oak Street");
+    Vertex N = new Vertex("11th Street");
+    Vertex O = new Vertex("Elm Street");
+    Vertex P = new Vertex("Washington Street");
+    Vertex Q = new Vertex("12th Street");
+    Vertex R = new Vertex("Cedar Street");
+    Vertex S = new Vertex("13th Street");
+    Vertex T = new Vertex("14th Street");
+    Vertex U = new Vertex("15th Street");
+    Vertex V = new Vertex("16th Street");
+    Vertex W = new Vertex("17th Street");
+    Vertex X = new Vertex("18th Street");
+    Vertex Z = new Vertex("Lake Street");
+    
+    ArrayList<Vertex> vertices = new ArrayList<Vertex>();
+    vertices.add(A);
+    vertices.add(B);
+    vertices.add(C);
+    vertices.add(D);
+    vertices.add(E);
+    vertices.add(F);
+    vertices.add(G);
+    vertices.add(H);
+    vertices.add(I);
+    vertices.add(J);
+    vertices.add(K);
+    vertices.add(L);
+    vertices.add(M);
+    vertices.add(N);
+    vertices.add(O);
+    vertices.add(P);
+    vertices.add(Q);
+    vertices.add(R);
+    vertices.add(S);
+    vertices.add(T);
+    vertices.add(U);
+    vertices.add(V);
+    vertices.add(W);
+    vertices.add(X);
+    vertices.add(Z);
+    
     // set the edges and weight
     A.adjacencies = new Edge[]{ new Edge(M, 8) };
     B.adjacencies = new Edge[]{ new Edge(D, 11) };
@@ -41,13 +81,16 @@ void setup()
     System.out.println("Distance to " + Z + ": " + Z.minDistance);
     ArrayList<Vertex> path = dij.getShortestPathTo(Z);
     System.out.println("Path: " + path);
-
+    
+    city = new City(CITY_SIZE, vertices, path);
+    
 }
+
 
 void draw()
 {
    frame.setLocation(width/3,height/3);   
    city.display();
+   ArrayList<Vertex> newVertices = city.getVertices();
    noLoop();
 }
-
