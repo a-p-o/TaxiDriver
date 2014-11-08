@@ -1,6 +1,8 @@
 // is it still blank ? it shouldnt be.
 int CITY_SIZE = 5;
 City city;
+ ArrayList<Vertex> path;
+
 
 void setup()
 {
@@ -36,7 +38,7 @@ void setup()
     Vertex X = new Vertex("18th Street");
     Vertex Z = new Vertex("Lake Street");
     
-    ArrayList<Vertex> vertices = new ArrayList<Vertex>();
+    ArrayList vertices = new ArrayList();
     vertices.add(A);
     vertices.add(B);
     vertices.add(C);
@@ -79,7 +81,7 @@ void setup()
     Dijkstra dij = new Dijkstra();
     dij.computePaths(A); // run Dijkstra
     System.out.println("Distance to " + Z + ": " + Z.minDistance);
-    ArrayList<Vertex> path = dij.getShortestPathTo(Z);
+    path = dij.getShortestPathTo(Z);
     System.out.println("Path: " + path);
     
     city = new City(CITY_SIZE, vertices, path);
@@ -91,5 +93,16 @@ void draw()
    frame.setLocation(width/3,height/3);   
    city.display();
    ArrayList<Vertex> newVertices = city.getVertices();
+   for(int i = 0; i < newVertices.size(); i++)
+     {
+       for( int j = 0 ; j < path.size(); j ++)
+       {
+         if( path.get(j).getName() == newVertices.get(i).getName())
+         {
+            newVertices.get(i).fillVertex(); 
+         }
+       } 
+     }
+
    noLoop();
 }

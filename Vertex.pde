@@ -22,8 +22,6 @@ class Vertex {
     }
     
     void drawVertex(int x, int y) {
-      xValue = x;
-      yValue = y;
       strokeWeight(2);
       ellipse(x, y, 20, 20);
    }
