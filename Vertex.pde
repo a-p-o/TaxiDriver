@@ -1,13 +1,13 @@
-int xValue;
-int yValue;
-int widthValue;
-int heightValue;
-
 class Vertex {
     String name;
     Edge[] adjacencies;
     double minDistance = Double.POSITIVE_INFINITY;
     Vertex previous;
+    int xValue;
+    int yValue;
+    int widthValue;
+    int heightValue;
+
     
     Vertex(String argName) { 
       name = argName; 

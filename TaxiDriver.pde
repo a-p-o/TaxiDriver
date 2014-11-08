@@ -83,7 +83,6 @@ void setup()
     System.out.println("Path: " + path);
     
     city = new City(CITY_SIZE, vertices, path);
-    
 }
 
 

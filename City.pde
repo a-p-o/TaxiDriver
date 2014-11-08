@@ -51,10 +51,9 @@ class City
         Intersection intersection = new Intersection(intersects);
         //intersectionGrid[count] = intersection;
         
-        
         intersection.displayVertex(vertices.get(j-1));
         println( "count: " + count);
-        
+                
         vertices.get(count).setXValue((int)intersects.getX());
         vertices.get(count).setYValue((int)intersects.getY());
         println("X: " + vertices.get(count).getXValue());
@@ -63,7 +62,6 @@ class City
       }
     }
   }
-  
   
   Point findIntersection(Point p1, Point p2, Point p3, Point p4) {  
   float xDistance1, yDistance1, xDistance2, yDistance2, xDistance3, yDistance3;  
@@ -91,11 +89,11 @@ class City
   
   ArrayList<Vertex> getVertices()
   {
-//     for(int i = 0; i < vertices.size(); i++)
-//     {
-//       println(i);
-//       println("x value: " + vertices.get(i).getXValue() + " y value: " + vertices.get(i).getYValue());
-//     }
+     for(int i = 0; i < vertices.size(); i++)
+     {
+       println(i);
+       println("x value: " + vertices.get(i).getXValue() + " y value: " + vertices.get(i).getYValue());
+     }
     return this.vertices; 
   }
 }
