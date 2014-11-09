@@ -11,12 +11,12 @@ class Vertex
 
   Vertex(String argName)
   { 
-    name = argName; 
+    name = argName;
   }
   
   String toString()
   { 
-    return name; 
+    return name;
   }
   
   int compareTo(Vertex other)
@@ -32,9 +32,9 @@ class Vertex
  
   void fillVertex()
   {
-    fill(255, 0 ,0, 255);
+    fill(255, 0, 0, 255);
     strokeWeight(2);
-    ellipse(xValue, yValue, 20 ,20 );
+    ellipse(xValue, yValue, 20, 20);
   }
  
   int getXValue()
