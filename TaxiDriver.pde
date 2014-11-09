@@ -8,7 +8,6 @@ void setup()
 {
     size(800, 500);
     background(255);
-    city.display();
     //Intersection intersection = new Intersection();
     //Intersection[] intersections = city.getIntersections();
    
@@ -86,6 +85,7 @@ void setup()
     System.out.println("Path: " + path);
     
     city = new City(CITY_SIZE, vertices, path);
+    city.display();
 }
 
 
@@ -94,15 +94,15 @@ void draw()
    frame.setLocation(width/3,height/3);   
    ArrayList<Vertex> newVertices = city.getVertices();
    for(int i = 0; i < newVertices.size(); i++)
-   {
-     for( int j = 0 ; j < path.size(); j ++)
      {
-       if( path.get(j).getName() == newVertices.get(i).getName())
+       for( int j = 0 ; j < path.size(); j ++)
        {
-          newVertices.get(i).fillVertex(); 
-       }
+         if( path.get(j).getName() == newVertices.get(i).getName())
+         {
+            newVertices.get(i).fillVertex(); 
+         }
+       } 
      }
-   }
 
    //noLoop();
 }
