@@ -21,9 +21,9 @@ class Vertex {
         return Double.compare(minDistance, other.minDistance);
     }
     
-    void drawVertex(int x, int y) {
+    void drawVertex() {
       strokeWeight(2);
-      ellipse(x, y, 20, 20);
+      ellipse(xValue, yValue, 20, 20);
    }
    
    void fillVertex()

@@ -14,11 +14,6 @@ class Intersection {
     //System.out.println("Has crash: " + hasCrash);
   }
   
-  void displayVertex(Vertex vertex) {
-    //drawing vertex
-     vertex.drawVertex((int)xLocation, (int)yLocation);
-  }
-  
   int getTime() {
     //returning time
     return time;
