@@ -22,6 +22,7 @@ class Dijkstra
       for (Edge e : u.adjacencies)
       {
         Vertex v = e.target;
+        
         double weight = e.weight;
         double distanceThroughU = u.minDistance + weight;
         if (distanceThroughU < v.minDistance)
@@ -30,6 +31,7 @@ class Dijkstra
           v.minDistance = distanceThroughU ;
           v.previous = u;
           vertexQueue.add(v);
+          
         }
       }
     }
