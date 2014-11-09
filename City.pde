@@ -50,13 +50,11 @@ class City
         intersects = findIntersection(p1, p2, p3, p4);
         Intersection intersection = new Intersection(intersects);
         //intersectionGrid[count] = intersection;
-        
-        
-        //intersection.displayVertex(vertices.get(j-1));
         println( "count: " + count);
-        
+                
         vertices.get(count).setXValue((int)intersects.getX());
         vertices.get(count).setYValue((int)intersects.getY());
+        vertices.get(count).drawVertex();
        
         println("X: " + vertices.get(count).getXValue());
         println("Y: " + vertices.get(count).getYValue());
@@ -65,7 +63,6 @@ class City
       }
     }
   }
-  
   
   Point findIntersection(Point p1, Point p2, Point p3, Point p4) {  
   float xDistance1, yDistance1, xDistance2, yDistance2, xDistance3, yDistance3;  

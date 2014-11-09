@@ -1,7 +1,7 @@
 // is it still blank ? it shouldnt be.
 int CITY_SIZE = 5;
 City city;
- ArrayList<Vertex> path;
+ArrayList<Vertex> path;
 
 
 void setup()
@@ -85,15 +85,13 @@ void setup()
     System.out.println("Path: " + path);
     
     city = new City(CITY_SIZE, vertices, path);
-    
-    
+    city.display();
 }
 
 
 void draw()
 {
-   frame.setLocation(width/3,height/3);   
-   city.display();
+   
    ArrayList<Vertex> newVertices = city.getVertices();
    for(int i = 0; i < newVertices.size(); i++)
      {
@@ -106,4 +104,7 @@ void draw()
        } 
      }
    noLoop();
+
+
+   //noLoop();
 }

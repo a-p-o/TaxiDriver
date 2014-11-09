@@ -1,14 +1,13 @@
-
 class Vertex {
-int xValue;
-int yValue;
-int widthValue;
-int heightValue;
-
     String name;
     Edge[] adjacencies;
     double minDistance = Double.POSITIVE_INFINITY;
     Vertex previous;
+    int xValue;
+    int yValue;
+    int widthValue;
+    int heightValue;
+
     
     Vertex(String argName) { 
       name = argName; 
@@ -22,9 +21,9 @@ int heightValue;
         return Double.compare(minDistance, other.minDistance);
     }
     
-    void drawVertex(int x, int y) {
+    void drawVertex() {
       strokeWeight(2);
-      ellipse(x, y, 20, 20);
+      ellipse(xValue, yValue, 20, 20);
    }
    
    void fillVertex()
