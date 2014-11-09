@@ -89,7 +89,7 @@ void setup()
   
   Dijkstra dij = new Dijkstra();
   dij.computePaths(vertices.get((int) random(0, 2)).get((int) random(0, 2))); // run Dijkstra
-  path = dij.getShortestPathTo(vertices.get((int) random(6, CITY_SIZE - 1)).get((int) random(6, CITY_SIZE - 1)));
+  path = dij.getShortestPathTo(vertices.get((int) random(5, CITY_SIZE)).get((int) random(5, CITY_SIZE)));
   System.out.println("Path: " + path);
   
   city = new City(CITY_SIZE, vertices);
