@@ -94,15 +94,15 @@ void draw()
    city.display();
    ArrayList<Vertex> newVertices = city.getVertices();
    for(int i = 0; i < newVertices.size(); i++)
+   {
+     for( int j = 0 ; j < path.size(); j ++)
      {
-       for( int j = 0 ; j < path.size(); j ++)
+       if( path.get(j).getName() == newVertices.get(i).getName())
        {
-         if( path.get(j).getName() == newVertices.get(i).getName())
-         {
-            newVertices.get(i).fillVertex(); 
-         }
-       } 
+          newVertices.get(i).fillVertex(); 
+       }
      }
+   }
 
    noLoop();
 }
