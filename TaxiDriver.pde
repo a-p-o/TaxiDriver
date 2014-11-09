@@ -85,7 +85,6 @@ void setup()
   city.display();
 }
 
-
 void draw()
 {
   ArrayList<Vertex> newVertices = city.getVertices();
@@ -101,3 +100,4 @@ void draw()
     } 
   }
 }
+
