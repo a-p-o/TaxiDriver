@@ -91,7 +91,7 @@ void setup()
 
 void draw()
 {
-   frame.setLocation(width/3,height/3);   
+   
    ArrayList<Vertex> newVertices = city.getVertices();
    for(int i = 0; i < newVertices.size(); i++)
      {
