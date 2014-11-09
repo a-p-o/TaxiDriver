@@ -1,29 +1,31 @@
-class Intersection {
+class Intersection
+{
   
-  int xLocation;
-  int yLocation;
+  int xLocation, yLocation;
   int time;
   boolean hasCrash;
   
-  Intersection(Point point) {
+  Intersection(Point point)
+  {
     xLocation = (int)point.getX();
     yLocation = (int)point.getY();
     
     hasCrash = (0.5 < random(0, 1)) ? true : false;
-    
-    //System.out.println("Has crash: " + hasCrash);
   }
   
-  int getTime() {
+  int getTime()
+  {
     //returning time
     return time;
   }
   
-  float getX() {
+  float getX()
+  {
     return xLocation;
   }
   
-  float getY() {
+  float getY()
+  {
     return yLocation;
   }
 }
