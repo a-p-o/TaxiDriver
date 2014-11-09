@@ -1,7 +1,7 @@
-class Vertex
+class Vertex implements Comparable
 {
   String name;
-  Edge[] adjacencies;
+  ArrayList<Edge> adjacencies;
   double minDistance = Double.POSITIVE_INFINITY;
   Vertex previous;
   int xValue;
@@ -19,9 +19,12 @@ class Vertex
     return name;
   }
   
-  int compareTo(Vertex other)
+  int compareTo(Object other)
   {
-    return Double.compare(minDistance, other.minDistance);
+    // BEWARE: A Vertex is messily being cast from and Object, just so we can "implement" Comparable.
+    // If Comparable is not implemented, then the Dijkstra algorithm breaks, because PriorityQueue needs Vertex to be comparable.
+    // DO NOT REUSE THIS CODE
+    return Double.compare(minDistance, ((Vertex) other).minDistance);
   }
   
   void drawVertex()

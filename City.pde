@@ -6,16 +6,14 @@ class City
   int intersectionGridSize;
   Intersection[] intersectionGrid;
   ArrayList<Vertex> path;
-  ArrayList<Vertex> vertices;
+  ArrayList<ArrayList<Vertex>> vertices;
   Point intersects;
 
-  City(int size, ArrayList<Vertex> vertices, ArrayList<Vertex> path)
+  City(int size, ArrayList<ArrayList<Vertex>> vertices)
   {
     citySize = size;
-    println("in constructor's path: " + path);
-    println("in constructor's vertices: " + vertices);
+//    println("in constructor's vertices: " + vertices);
     this.vertices = vertices;
-    this.path = path;
   }
 
   Intersection[] getIntersections()
@@ -33,12 +31,12 @@ class City
     // Draw city grid
     for(int i = 0; i <= citySize; i++)
     {
-      line(0, i*distanceHorizontal, width, i*distanceHorizontal);
-      line(i*distanceVertical, 0, i*distanceVertical, height);
+      line(0, i * distanceHorizontal, width, i * distanceHorizontal);
+      line(i * distanceVertical, 0, i * distanceVertical, height);
     }
     
     // Draw intersections
-    int count = 0;
+//    int count = 0;
     for(int i = 1; i <= citySize; i++)
     {      
       for(int j = 1; j <= citySize; j++)
@@ -50,12 +48,16 @@ class City
         
         intersects = findIntersection(p1, p2, p3, p4);
         Intersection intersection = new Intersection(intersects);
-                
-        vertices.get(count).setXValue((int)intersects.getX());
-        vertices.get(count).setYValue((int)intersects.getY());
-        vertices.get(count).drawVertex();
         
-        count++;
+        vertices.get(i - 1).get(j - 1).setXValue((int) intersects.getX());
+        vertices.get(i - 1).get(j - 1).setYValue((int) intersects.getY());
+        vertices.get(i - 1).get(j - 1).drawVertex();
+        
+//        vertices.get(count).setXValue((int)intersects.getX());
+//        vertices.get(count).setYValue((int)intersects.getY());
+//        vertices.get(count).drawVertex();
+        
+//        count++;
       }
     }
   }
@@ -86,7 +88,7 @@ class City
     return citySize;
   }
   
-  ArrayList<Vertex> getVertices()
+  ArrayList<ArrayList<Vertex>> getVertices()
   {
     return this.vertices; 
   }

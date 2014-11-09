@@ -1,5 +1,5 @@
 // is it still blank ? it shouldnt be.
-int CITY_SIZE = 5;
+int CITY_SIZE = 8;
 City city;
 ArrayList<Vertex> path;
 
@@ -8,96 +8,110 @@ void setup()
   size(800, 500);
   background(255);
    
-  // Name all vertices 
-  Vertex A = new Vertex("1st Street");
-  Vertex B = new Vertex("2nd Street");
-  Vertex C = new Vertex("3rd Street");
-  Vertex D = new Vertex("4th Street");
-  Vertex E = new Vertex("5th Street");
-  Vertex F = new Vertex("6th Street");
-  Vertex G = new Vertex("7th Street");
-  Vertex H = new Vertex("8th Street");
-  Vertex I = new Vertex("9th Street");
-  Vertex J = new Vertex("Park Street");
-  Vertex K = new Vertex("Pine Street");
-  Vertex L = new Vertex("10th Street");
-  Vertex M = new Vertex("Oak Street");
-  Vertex N = new Vertex("11th Street");
-  Vertex O = new Vertex("Elm Street");
-  Vertex P = new Vertex("Washington Street");
-  Vertex Q = new Vertex("12th Street");
-  Vertex R = new Vertex("Cedar Street");
-  Vertex S = new Vertex("13th Street");
-  Vertex T = new Vertex("14th Street");
-  Vertex U = new Vertex("15th Street");
-  Vertex V = new Vertex("16th Street");
-  Vertex W = new Vertex("17th Street");
-  Vertex X = new Vertex("18th Street");
-  Vertex Z = new Vertex("Lake Street");
+  // Name all vertices
+  ArrayList<ArrayList<Vertex>> vertices = new ArrayList<ArrayList<Vertex>>();
+  ArrayList<Vertex> cityRow;
   
-  ArrayList vertices = new ArrayList();
-  vertices.add(A);
-  vertices.add(B);
-  vertices.add(C);
-  vertices.add(D);
-  vertices.add(E);
-  vertices.add(F);
-  vertices.add(G);
-  vertices.add(H);
-  vertices.add(I);
-  vertices.add(J);
-  vertices.add(K);
-  vertices.add(L);
-  vertices.add(M);
-  vertices.add(N);
-  vertices.add(O);
-  vertices.add(P);
-  vertices.add(Q);
-  vertices.add(R);
-  vertices.add(S);
-  vertices.add(T);
-  vertices.add(U);
-  vertices.add(V);
-  vertices.add(W);
-  vertices.add(X);
-  vertices.add(Z);
+  for(int i = 0; i < CITY_SIZE; i++)
+  {
+    cityRow = new ArrayList<Vertex>();
+    for(int j = 0; j < CITY_SIZE; j++)
+    {
+      Vertex k = new Vertex(i + "" + j + "th Street");
+      
+      cityRow.add(k);
+    }
+    vertices.add(cityRow);
+  }
   
   // set the edges and weight
-  A.adjacencies = new Edge[]{ new Edge(M, 8) };
-  B.adjacencies = new Edge[]{ new Edge(D, 11) };
-  D.adjacencies = new Edge[]{ new Edge(B, 11) };
-  F.adjacencies = new Edge[]{ new Edge(K, 23) };
-  K.adjacencies = new Edge[]{ new Edge(O, 40) };
-  J.adjacencies = new Edge[]{ new Edge(K, 25) };
-  M.adjacencies = new Edge[]{ new Edge(R, 8) };
-  O.adjacencies = new Edge[]{ new Edge(K, 40) };
-  P.adjacencies = new Edge[]{ new Edge(Z, 18) };
-  R.adjacencies = new Edge[]{ new Edge(P, 15) };
-  Z.adjacencies = new Edge[]{ new Edge(P, 18) };
+  for(int row = 0; row < vertices.size(); row++)
+  {
+    for(int col = 0; col < vertices.get(row).size(); col++)
+    {
+      ArrayList<Edge> edges = new ArrayList<Edge>();
+      
+      // Check left and right of vertex
+      for(int i = -1; i <= 1; i += 2)
+      {
+        try
+        {
+          // Check top vertex, then bottom vertex
+          if(vertices.get(row + i).get(col) == null)
+          {
+            println("A vertex does not exist top/bottom");
+          }
+          else
+          {
+            // Vertex top/bottom exists
+            edges.add(new Edge(vertices.get(row + i).get(col), (int) random(1, 20)));
+          }
+        }
+        catch(ArrayIndexOutOfBoundsException e)
+        {
+//          println(e);
+        }
+        catch(IndexOutOfBoundsException e)
+        {
+//          println(e);
+        }
+      }
+      
+      // Check top and bottom of vertex
+      for(int j = -1; j <= 1; j +=2)
+      {
+        try
+        {
+          // Check left vertex, then right vertex
+          if(vertices.get(row).get(col + j) == null)
+          {
+            println("A vertex does not exist left/right");
+          }
+          else
+          {
+            // Vertex left/right exists
+            edges.add(new Edge(vertices.get(row).get(col + j), (int) random(1, 20)));
+          }
+        }
+        catch(ArrayIndexOutOfBoundsException e)
+        {
+//          println(e);
+        }
+        catch(IndexOutOfBoundsException e)
+        {
+//          println(e);
+        }
+      }
+      
+      vertices.get(row).get(col).adjacencies = edges;
+    }
+  }
   
   Dijkstra dij = new Dijkstra();
-  dij.computePaths(A); // run Dijkstra
-  System.out.println("Distance to " + Z + ": " + Z.minDistance);
-  path = dij.getShortestPathTo(Z);
+  dij.computePaths(vertices.get((int) random(0, 2)).get((int) random(0, 2))); // run Dijkstra
+  path = dij.getShortestPathTo(vertices.get((int) random(6, CITY_SIZE - 1)).get((int) random(6, CITY_SIZE - 1)));
   System.out.println("Path: " + path);
   
-  city = new City(CITY_SIZE, vertices, path);
+  city = new City(CITY_SIZE, vertices);
   city.display();
 }
 
 void draw()
 {
-  ArrayList<Vertex> newVertices = city.getVertices();
+  ArrayList<ArrayList<Vertex>> newVertices = city.getVertices();
   
-  for(int i = 0; i < newVertices.size(); i++)
+  for(int row = 0; row < newVertices.size(); row++)
   {
-    for(int j = 0; j < path.size(); j++)
+    for(int col = 0; col < newVertices.get(row).size(); col++)
     {
-      if(path.get(j).getName() == newVertices.get(i).getName())
+      for(int pathIndex = 0; pathIndex < path.size(); pathIndex++)
       {
-        newVertices.get(i).fillVertex(); 
+        if(path.get(pathIndex).getName() == newVertices.get(row).get(col).getName())
+        {
+          newVertices.get(row).get(col).fillVertex();
+        }
       }
-    } 
+    }
   }
 }
 
