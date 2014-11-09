@@ -54,6 +54,7 @@ class City
                 
         vertices.get(count).setXValue((int)intersects.getX());
         vertices.get(count).setYValue((int)intersects.getY());
+        vertices.get(count).drawVertex();
        
         println("X: " + vertices.get(count).getXValue());
         println("Y: " + vertices.get(count).getYValue());
