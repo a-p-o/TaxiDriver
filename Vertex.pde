@@ -39,6 +39,18 @@ class Vertex implements Comparable
     strokeWeight(2);
     ellipse(xValue, yValue, 20, 20);
   }
+  
+  void drawStartImage()
+  {
+     PImage taxi = loadImage("taxi.png");
+     image(taxi, xValue-30, yValue-15);
+  }
+  
+  void drawEndImage()
+  {
+     PImage house = loadImage("house.png");
+     image(house, xValue-30, yValue-15);
+  }
  
   int getXValue()
   {
