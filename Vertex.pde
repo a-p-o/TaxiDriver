@@ -29,7 +29,87 @@ class Vertex implements Comparable
   {
     strokeWeight(2);
     fill(255);
+    ellipseMode(CENTER);
     ellipse(xValue, yValue, 20, 20);
+  }
+  
+  // BEWARE:
+  // THIS CODE IS NOT FUNCTIONAL, WORK IN PROGRESS.
+  void drawEdges()
+  {
+    int targetVertexX, targetVertexY;
+    Edge targetEdge;
+    Vertex targetVertex;
+    
+    for(int i = 0; i < adjacencies.size(); i++)
+    {
+      targetEdge = adjacencies.get(i);
+      targetVertex = targetEdge.getTarget();
+      
+      if(this == targetVertex)
+      {
+        continue;
+      }
+      
+      targetVertexX = targetVertex.getXValue();
+      targetVertexY = targetVertex.getYValue();
+      
+      println("Target: " + targetVertex);
+      
+      if(targetVertexX < xValue)
+      {
+        int x, y;
+        String message;
+        
+        message = "L " + targetEdge.getWeight();
+        x = xValue - ((int) (xValue - targetVertexX) / 2);
+        y = yValue;
+        
+        fill(0);
+//        text(message, x, y);
+      }
+      else if(targetVertexX > xValue)
+      {
+        int x, y;
+        String message;
+        
+        message = "R " + targetEdge.getWeight();
+        x = xValue + (int)((targetVertexX - xValue) / 2) + 20;
+        println((int)((targetVertexX - xValue) / 2));
+        println("target: " + targetVertexX);
+        println("this: " + xValue);
+//        println(this.xValue + (int)((targetVertexX - this.xValue) / 2));
+        y = yValue;
+        
+        fill(0);
+        text(message, x, y);
+      }
+      
+      if(targetVertexY < yValue)
+      {
+        int x, y;
+        String message;
+        
+        message = "U " + targetEdge.getWeight();
+        x = xValue;
+        y = yValue -  ((int) (yValue - targetVertexY) / 2);
+        
+        fill(0);
+//        text(message, x, y);
+      }
+      else
+      {
+        int x, y;
+        String message;
+        
+        message = "D " + targetEdge.getWeight();
+        x = xValue;
+        y = yValue + ((int) (yValue - targetVertexY) / 2);
+        
+        fill(0);
+//        text(message, x, y);
+      }
+    }
   }
  
   void fillVertex()
