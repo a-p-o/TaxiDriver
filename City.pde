@@ -45,7 +45,7 @@ class City
         vertices.get(i - 1).get(j - 1).setXValue((int) intersects.getX());
         vertices.get(i - 1).get(j - 1).setYValue((int) intersects.getY());
         vertices.get(i - 1).get(j - 1).drawVertex();
-        vertices.get(i - 1).get(j - 1).drawEdges();
+//        vertices.get(i - 1).get(j - 1).drawEdges();
       }
     }
   }
