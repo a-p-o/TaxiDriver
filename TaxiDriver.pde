@@ -1,17 +1,24 @@
 // is it still blank ? it shouldnt be.
-int CITY_SIZE = 8;
+int CITY_SIZE = 10;
+int startX;
+int startY;
+int destX;
+int destY;
 City city;
 ArrayList<Vertex> path;
+ArrayList<ArrayList<Vertex>>newVertices;
+ArrayList<Vertex> userSelectedPath;
 
 void setup()
 {
   // Window and frame
   size(800, 500);
   background(255);
-  
+
   // Create Vertices
   ArrayList<ArrayList<Vertex>> vertices = new ArrayList<ArrayList<Vertex>>();
   ArrayList<Vertex> cityRow;
+  userSelectedPath = new ArrayList<Vertex>();
   
   for(int i = 0; i < CITY_SIZE; i++)
   {
@@ -19,7 +26,6 @@ void setup()
     for(int j = 0; j < CITY_SIZE; j++)
     {
       Vertex k = new Vertex(i + "" + j + "th Street");
-      
       cityRow.add(k);
     }
     vertices.add(cityRow);
@@ -89,17 +95,21 @@ void setup()
   }
   
   Dijkstra dij = new Dijkstra();
-  dij.computePaths(vertices.get((int) random(0, 2)).get((int) random(0, 2))); // run Dijkstra
-  path = dij.getShortestPathTo(vertices.get((int) random(5, CITY_SIZE)).get((int) random(5, CITY_SIZE)));
-  System.out.println("Path: " + path);
+  startX = (int)random(0, 2);
+  startY = (int)random(0, 2);
+  dij.computePaths(vertices.get(startX).get(startY)); // run Dijkstra
   
+  destX = (int)random(5, CITY_SIZE);
+  destY = (int)random(5, CITY_SIZE);
+  path = dij.getShortestPathTo(vertices.get(destX).get(destY));
+  System.out.println("Path: " + path);
   city = new City(CITY_SIZE, vertices);
   city.display();
 }
 
 void draw()
-{
-  ArrayList<ArrayList<Vertex>> newVertices = city.getVertices();
+{  
+  newVertices = city.getVertices();
   
   for(int row = 0; row < newVertices.size(); row++)
   {
@@ -109,10 +119,42 @@ void draw()
       {
         if(path.get(pathIndex).getName() == newVertices.get(row).get(col).getName())
         {
-          newVertices.get(row).get(col).fillVertex();
+          //newVertices.get(row).get(col).fillVertex();
         }
       }
     }
   }
+  
+  newVertices.get(startX).get(startY).drawStartImage();
+  newVertices.get(destX).get(destY).drawEndImage();
+  
+  for(int i =0; i < userSelectedPath.size(); i++)
+  {
+     userSelectedPath.get(i).fillVertex();
+  }
 }
 
+void keyPressed()
+{
+  if (key == CODED)
+  {
+      if (keyCode == LEFT)
+      {
+          startX--;
+      }
+      else if (keyCode == RIGHT)
+      {
+          startX++;
+      }
+      else if (keyCode == UP)
+      {
+           startY--;
+      }
+      else if (keyCode == DOWN)
+      {
+         startY++;
+      }
+   }  
+   
+   userSelectedPath.add(newVertices.get(startX).get(startY));
+}
