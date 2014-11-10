@@ -5,7 +5,8 @@ class Edge
   
   Edge(Vertex argTarget, int argWeight)
   {
-   target = argTarget; weight = argWeight; 
+   target = argTarget;
+   weight = argWeight; 
   }
   
   Vertex getTarget()
