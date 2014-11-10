@@ -12,13 +12,7 @@ class City
   City(int size, ArrayList<ArrayList<Vertex>> vertices)
   {
     citySize = size;
-//    println("in constructor's vertices: " + vertices);
     this.vertices = vertices;
-  }
-
-  Intersection[] getIntersections()
-  {
-    return intersectionGrid;
   }
 
   void display()
@@ -36,7 +30,6 @@ class City
     }
     
     // Draw intersections
-//    int count = 0;
     for(int i = 1; i <= citySize; i++)
     {      
       for(int j = 1; j <= citySize; j++)
@@ -52,12 +45,6 @@ class City
         vertices.get(i - 1).get(j - 1).setXValue((int) intersects.getX());
         vertices.get(i - 1).get(j - 1).setYValue((int) intersects.getY());
         vertices.get(i - 1).get(j - 1).drawVertex();
-        
-//        vertices.get(count).setXValue((int)intersects.getX());
-//        vertices.get(count).setYValue((int)intersects.getY());
-//        vertices.get(count).drawVertex();
-        
-//        count++;
       }
     }
   }

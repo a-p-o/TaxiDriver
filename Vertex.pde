@@ -6,8 +6,6 @@ class Vertex implements Comparable
   Vertex previous;
   int xValue;
   int yValue;
-  int widthValue;
-  int heightValue;
 
   Vertex(String argName)
   { 
@@ -30,12 +28,13 @@ class Vertex implements Comparable
   void drawVertex()
   {
     strokeWeight(2);
+    fill(255);
     ellipse(xValue, yValue, 20, 20);
   }
  
   void fillVertex()
   {
-    fill(255, 0, 0, 255);
+    fill(255, 0, 0);
     strokeWeight(2);
     ellipse(xValue, yValue, 20, 20);
   }

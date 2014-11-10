@@ -1,10 +1,21 @@
 class Edge
 {
   Vertex target;
-  double weight;
+  int weight;
   
-  Edge(Vertex argTarget, double argWeight)
+  Edge(Vertex argTarget, int argWeight)
   {
-   target = argTarget; weight = argWeight; 
+   target = argTarget;
+   weight = argWeight; 
+  }
+  
+  Vertex getTarget()
+  {
+    return target;
+  }
+  
+  int getWeight()
+  {
+    return weight;
   }
 }

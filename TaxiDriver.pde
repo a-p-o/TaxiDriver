@@ -11,12 +11,13 @@ ArrayList<Vertex> userSelectedPath;
 
 void setup()
 {
+  // Window and frame
   size(800, 500);
   background(255);
-   
-  // Name all vertices
-  ArrayList<Vertex> cityRow;
+
+  // Create Vertices
   ArrayList<ArrayList<Vertex>> vertices = new ArrayList<ArrayList<Vertex>>();
+  ArrayList<Vertex> cityRow;
   userSelectedPath = new ArrayList<Vertex>();
   
   for(int i = 0; i < CITY_SIZE; i++)
@@ -30,19 +31,19 @@ void setup()
     vertices.add(cityRow);
   }
   
-  // set the edges and weight
+  // Associate the Vertices with Edges with weights
   for(int row = 0; row < vertices.size(); row++)
   {
     for(int col = 0; col < vertices.get(row).size(); col++)
     {
       ArrayList<Edge> edges = new ArrayList<Edge>();
       
-      // Check left and right of vertex
+      // Check top and bottom of Vertex
       for(int i = -1; i <= 1; i += 2)
       {
         try
         {
-          // Check top vertex, then bottom vertex
+          // Check top Vertex, then bottom Vertex
           if(vertices.get(row + i).get(col) == null)
           {
             println("A vertex does not exist top/bottom");
@@ -63,20 +64,20 @@ void setup()
         }
       }
       
-      // Check top and bottom of vertex
-      for(int j = -1; j <= 1; j +=2)
+      // Check left and right of Vertex
+      for(int i = -1; i <= 1; i +=2)
       {
         try
         {
-          // Check left vertex, then right vertex
-          if(vertices.get(row).get(col + j) == null)
+          // Check left Vertex, then right Vertex
+          if(vertices.get(row).get(col + i) == null)
           {
             println("A vertex does not exist left/right");
           }
           else
           {
             // Vertex left/right exists
-            edges.add(new Edge(vertices.get(row).get(col + j), (int) random(1, 20)));
+            edges.add(new Edge(vertices.get(row).get(col + i), (int) random(1, 20)));
           }
         }
         catch(ArrayIndexOutOfBoundsException e)
