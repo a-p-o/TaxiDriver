@@ -45,16 +45,19 @@ class Vertex implements Comparable
     {
       targetEdge = adjacencies.get(i);
       targetVertex = targetEdge.getTarget();
+     
       
-      if(this == targetVertex)
+      if(this.getXValue() == targetVertex.getXValue())
       {
-        continue;
+        if(this.getYValue() == targetVertex.getYValue())
+        {
+          println("this and Target are equal.");
+          continue;
+        }
       }
       
       targetVertexX = targetVertex.getXValue();
       targetVertexY = targetVertex.getYValue();
-      
-      println("Target: " + targetVertex);
       
       if(targetVertexX < xValue)
       {
@@ -75,14 +78,10 @@ class Vertex implements Comparable
         
         message = "R " + targetEdge.getWeight();
         x = xValue + (int)((targetVertexX - xValue) / 2) + 20;
-        println((int)((targetVertexX - xValue) / 2));
-        println("target: " + targetVertexX);
-        println("this: " + xValue);
-//        println(this.xValue + (int)((targetVertexX - this.xValue) / 2));
         y = yValue;
         
         fill(0);
-        text(message, x, y);
+//        text(message, x, y);
       }
       
       if(targetVertexY < yValue)
@@ -95,7 +94,7 @@ class Vertex implements Comparable
         y = yValue -  ((int) (yValue - targetVertexY) / 2);
         
         fill(0);
-//        text(message, x, y);
+        //text(message, x, y);
       }
       else
       {
@@ -107,7 +106,7 @@ class Vertex implements Comparable
         y = yValue + ((int) (yValue - targetVertexY) / 2);
         
         fill(0);
-//        text(message, x, y);
+        //text(message, x, y);
       }
     }
   }

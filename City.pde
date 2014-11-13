@@ -1,5 +1,7 @@
 class City
 {
+  PImage roadSide;
+  PImage roadStraight;
   int citySize;
   int distanceHorizontal;
   int distanceVertical;
@@ -17,6 +19,8 @@ class City
 
   void display()
   {
+    roadSide = loadImage("roadSide.png");
+    roadStraight = loadImage("roadStraight.png");
     intersectionGridSize = citySize * citySize;
     intersectionGrid = new Intersection[intersectionGridSize];
     distanceHorizontal = (int) height/(citySize + 1);
@@ -27,6 +31,26 @@ class City
     {
       line(0, i * distanceHorizontal, width, i * distanceHorizontal);
       line(i * distanceVertical, 0, i * distanceVertical, height);
+    }
+    
+    // Draw road
+    int roadX = (int)(distanceHorizontal + 20);
+    int roadY = (int)(distanceVertical / 2);
+    int startRows = 0;
+    int startCols;
+    for(int rows = 0; rows < CITY_SIZE * 4; rows++)
+    {
+      for(int cols = 0; cols < CITY_SIZE; cols++)
+      {
+        startCols = 0;
+         for(int i = 0; i < 70; i++)
+         {
+          image(roadStraight, roadX + (cols * distanceVertical), startRows, 18, 15);
+          image(roadSide, startCols, roadY + (rows * distanceHorizontal), 15, 18); 
+          startCols += 15;
+         }
+       }
+      startRows += 15;
     }
     
     // Draw intersections
@@ -45,7 +69,7 @@ class City
         vertices.get(i - 1).get(j - 1).setXValue((int) intersects.getX());
         vertices.get(i - 1).get(j - 1).setYValue((int) intersects.getY());
         vertices.get(i - 1).get(j - 1).drawVertex();
-//        vertices.get(i - 1).get(j - 1).drawEdges();
+        vertices.get(i - 1).get(j - 1).drawEdges();
       }
     }
   }

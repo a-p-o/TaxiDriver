@@ -102,26 +102,14 @@ void setup()
   path = dij.getShortestPathTo(vertices.get(destX).get(destY));
   System.out.println("Path: " + path);
   city = new City(CITY_SIZE, vertices);
-  city.display();
+  
 }
 
 void draw()
-{  
+{ 
+  background(255); 
+  city.display();
   newVertices = city.getVertices();
-
-  for (int row = 0; row < newVertices.size (); row++)
-  {
-    for (int col = 0; col < newVertices.get (row).size(); col++)
-    {
-      for (int pathIndex = 0; pathIndex < path.size (); pathIndex++)
-      {
-        if (path.get(pathIndex).getName() == newVertices.get(row).get(col).getName())
-        {
-//          newVertices.get(row).get(col).fillVertex();
-        }
-      }
-    }
-  }
 
   newVertices.get(startX).get(startY).drawStartImage();
   newVertices.get(destX).get(destY).drawEndImage();
