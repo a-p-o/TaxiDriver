@@ -119,7 +119,7 @@ void draw()
       {
         if(path.get(pathIndex).getName() == newVertices.get(row).get(col).getName())
         {
-          //newVertices.get(row).get(col).fillVertex();
+//          newVertices.get(row).get(col).fillVertex();
         }
       }
     }
