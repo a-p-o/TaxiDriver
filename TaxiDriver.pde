@@ -1,4 +1,3 @@
-// is it still blank ? it shouldnt be.
 int CITY_SIZE = 10;
 int startX;
 int startY;
@@ -13,8 +12,8 @@ void setup()
 {
   // Window and frame
   size(800, 500);
-  background(255);
-
+  background(0,125,0);
+  
   // Create Vertices
   ArrayList<ArrayList<Vertex>> vertices = new ArrayList<ArrayList<Vertex>>();
   ArrayList<Vertex> cityRow;
@@ -103,12 +102,12 @@ void setup()
   System.out.println("Path: " + path);
   city = new City(CITY_SIZE, vertices);
   
+  city.display();
 }
 
 void draw()
 { 
-  background(255); 
-  city.display();
+  //background(255); 
   newVertices = city.getVertices();
 
   newVertices.get(startX).get(startY).drawStartImage();
@@ -146,13 +145,35 @@ void isWinner()
   println("shortest weight->"+ shortestPathWeight);
   println("user weight->"+ usersPathWeight);
 
+  for (int i =0; i < path.size (); i++)
+  {
+    path.get(i).fillShortestPathVertex();
+  }
+  
   if (usersPathWeight < shortestPathWeight)
   {
-    println("win");
-  } else
+     PFont f;
+    f = createFont("Times New Roman", 16, true);
+    fill(255, 255, 255);
+    rect(width-330, 0, 330, 130);
+    textFont(f, 24);
+    fill(255, 0, 0);
+    text("GAME OVER, You Win!", width-300, 40);
+    text("The shortest path score is " + shortestPathWeight + ",\n and your score is " + usersPathWeight +".", width-315, 80);
+  } 
+  else
   {
-    println("loser");
+    PFont f;
+    f = createFont("Times New Roman", 16, true);
+    fill(255, 255, 255);
+    rect(width-330, 0, 330, 130);
+    textFont(f, 24);
+    fill(255, 0, 0);
+    text("GAME OVER, You Lost!", width-300, 40);
+    text("The shortest path score is " + shortestPathWeight + ",\n and your score is " + usersPathWeight +".", width-315, 80);
   }
+  
+  noLoop();
 }
 
 void keyPressed()

@@ -118,6 +118,13 @@ class Vertex implements Comparable
     ellipse(xValue, yValue, 20, 20);
   }
   
+  void fillShortestPathVertex()
+  {
+    fill(0, 0, 255);
+    strokeWeight(2);
+    ellipse(xValue, yValue, 20, 20);
+  }
+  
   void drawStartImage()
   {
      PImage taxi = loadImage("taxi.png");
