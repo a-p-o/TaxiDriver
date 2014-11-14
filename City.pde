@@ -25,13 +25,6 @@ class City
     intersectionGrid = new Intersection[intersectionGridSize];
     distanceHorizontal = (int) height/(citySize + 1);
     distanceVertical = (int) width/(citySize + 1);
-   
-    // Draw city grid
-    for(int i = 0; i <= citySize; i++)
-    {
-      line(0, i * distanceHorizontal, width, i * distanceHorizontal);
-      line(i * distanceVertical, 0, i * distanceVertical, height);
-    }
     
     // Draw road
     int roadX = (int)(distanceHorizontal + 20);
@@ -68,7 +61,7 @@ class City
         
         vertices.get(i - 1).get(j - 1).setXValue((int) intersects.getX());
         vertices.get(i - 1).get(j - 1).setYValue((int) intersects.getY());
-        vertices.get(i - 1).get(j - 1).drawVertex();
+        vertices.get(i - 1).get(j - 1).drawVertex(i - 1, j - 1);
         vertices.get(i - 1).get(j - 1).drawEdges();
       }
     }

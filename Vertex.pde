@@ -12,11 +12,6 @@ class Vertex implements Comparable
     name = argName;
   }
   
-  String toString()
-  { 
-    return name;
-  }
-  
   int compareTo(Object other)
   {
     // BEWARE: A Vertex is messily being cast from and Object, just so we can "implement" Comparable.
@@ -25,92 +20,19 @@ class Vertex implements Comparable
     return Double.compare(minDistance, ((Vertex) other).minDistance);
   }
   
-  void drawVertex()
+  void drawVertex(int i, int j)
   {
     strokeWeight(2);
     fill(255);
     ellipseMode(CENTER);
     ellipse(xValue, yValue, 20, 20);
+    PFont f;
+    f = createFont("Times New Roman Bold", 16, true);
+    textFont(f, 11);
+    fill(0);
+    text(i + "" + j, xValue - 6, yValue + 4);
   }
   
-  // BEWARE:
-  // THIS CODE IS NOT FUNCTIONAL, WORK IN PROGRESS.
-  void drawEdges()
-  {
-    int targetVertexX, targetVertexY;
-    Edge targetEdge;
-    Vertex targetVertex;
-    
-    for(int i = 0; i < adjacencies.size(); i++)
-    {
-      targetEdge = adjacencies.get(i);
-      targetVertex = targetEdge.getTarget();
-     
-      
-      if(this.getXValue() == targetVertex.getXValue())
-      {
-        if(this.getYValue() == targetVertex.getYValue())
-        {
-          println("this and Target are equal.");
-          continue;
-        }
-      }
-      
-      targetVertexX = targetVertex.getXValue();
-      targetVertexY = targetVertex.getYValue();
-      
-      if(targetVertexX < xValue)
-      {
-        int x, y;
-        String message;
-        
-        message = "L " + targetEdge.getWeight();
-        x = xValue - ((int) (xValue - targetVertexX) / 2);
-        y = yValue;
-        
-        fill(0);
-//        text(message, x, y);
-      }
-      else if(targetVertexX > xValue)
-      {
-        int x, y;
-        String message;
-        
-        message = "R " + targetEdge.getWeight();
-        x = xValue + (int)((targetVertexX - xValue) / 2) + 20;
-        y = yValue;
-        
-        fill(0);
-//        text(message, x, y);
-      }
-      
-      if(targetVertexY < yValue)
-      {
-        int x, y;
-        String message;
-        
-        message = "U " + targetEdge.getWeight();
-        x = xValue;
-        y = yValue -  ((int) (yValue - targetVertexY) / 2);
-        
-        fill(0);
-        //text(message, x, y);
-      }
-      else
-      {
-        int x, y;
-        String message;
-        
-        message = "D " + targetEdge.getWeight();
-        x = xValue;
-        y = yValue + ((int) (yValue - targetVertexY) / 2);
-        
-        fill(0);
-        //text(message, x, y);
-      }
-    }
-  }
- 
   void fillVertex()
   {
     fill(255, 0, 0);

@@ -31,7 +31,6 @@ class Dijkstra
           v.minDistance = distanceThroughU ;
           v.previous = u;
           vertexQueue.add(v);
-          
         }
       }
     }

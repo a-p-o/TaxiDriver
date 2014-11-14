@@ -103,16 +103,13 @@ void setup()
   city = new City(CITY_SIZE, vertices);
   
   city.display();
+  newVertices = city.getVertices();
+  newVertices.get(startX).get(startY).drawStartImage();
+  newVertices.get(destX).get(destY).drawEndImage();
 }
 
 void draw()
-{ 
-  //background(255); 
-  newVertices = city.getVertices();
-
-  newVertices.get(startX).get(startY).drawStartImage();
-  newVertices.get(destX).get(destY).drawEndImage();
-
+{
   for (int i =0; i < userSelectedPath.size (); i++)
   {
     userSelectedPath.get(i).fillVertex();
@@ -132,7 +129,6 @@ int sumPaths(ArrayList<Vertex> path)
       }
     }
   }
-
   return sum;
 }
 
@@ -172,7 +168,6 @@ void isWinner()
     text("GAME OVER, You Lost!", width-300, 40);
     text("The shortest path score is " + shortestPathWeight + ",\n and your score is " + usersPathWeight +".", width-315, 80);
   }
-  
   noLoop();
 }
 
@@ -222,6 +217,33 @@ void keyPressed()
       }
     }
   }
+  
+  if(keyPressed)
+    {
+       if (key == 'h' || key == 'H')
+       {
+          PFont f;
+          int x = width-300;
+          int y = 40;
+          f = createFont("Times New Roman", 12, true);
+          fill(255, 255, 255);
+          rect(x - 30, 0, 330, 500);
+          textFont(f, 24);
+          fill(255, 0, 0);
+          text("HINT:\n", x, y);
+          for(int i = 0; i < (path.size() - 1); i++)
+          {
+             for(int j = 0; j < path.get(i).adjacencies.size(); j++)
+             {
+                if (path.get(i).adjacencies.get(j).getTarget() == path.get(i+1))
+                {
+                  y = y + 20;
+                  text(path.get(i).adjacencies.get(j).getTarget().getName() + " " + path.get(i).adjacencies.get(j).getWeight(), x, y);
+                }
+             }  
+          }
+       }
+    }
   
   if (startX == destX && startY == destY)
   {
