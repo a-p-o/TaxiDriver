@@ -1,3 +1,4 @@
+import javax.swing.JOptionPane;
 int CITY_SIZE = 10;
 int startX;
 int startY;
@@ -222,26 +223,18 @@ void keyPressed()
     {
        if (key == 'h' || key == 'H')
        {
-          PFont f;
-          int x = width-300;
-          int y = 40;
-          f = createFont("Times New Roman", 12, true);
-          fill(255, 255, 255);
-          rect(x - 30, 0, 330, 500);
-          textFont(f, 24);
-          fill(255, 0, 0);
-          text("HINT:\n", x, y);
+         String hint = "Street name: Weight:\n";
           for(int i = 0; i < (path.size() - 1); i++)
           {
              for(int j = 0; j < path.get(i).adjacencies.size(); j++)
              {
                 if (path.get(i).adjacencies.get(j).getTarget() == path.get(i+1))
                 {
-                  y = y + 20;
-                  text(path.get(i).adjacencies.get(j).getTarget().getName() + " " + path.get(i).adjacencies.get(j).getWeight(), x, y);
+                   hint = hint + path.get(i).adjacencies.get(j).getTarget().getName() + "       " + path.get(i).adjacencies.get(j).getWeight() + "\n"; 
                 }
              }  
           }
+          JOptionPane.showMessageDialog(null, hint); 
        }
     }
   
