@@ -100,7 +100,6 @@ void setup()
   destX = (int)random(5, CITY_SIZE);
   destY = (int)random(5, CITY_SIZE);
   path = dij.getShortestPathTo(vertices.get(destX).get(destY));
-  System.out.println("Path: " + path);
   city = new City(CITY_SIZE, vertices);
   
   city.display();
